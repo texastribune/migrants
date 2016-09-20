@@ -1,0 +1,26 @@
+// Colors
+$color-primary: hsl(0, 0%, 13%);
+$color-white: hsl(0, 0%, 100%);
+$color-tribune-teal: hsl(183, 100%, 28%);
+
+// Typography
+$font-size-base: 16;
+
+$font-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif;
+$font-serif: Georgia, 'Times New Roman', Times, serif;
+
+$color-text: $color-primary;
+$color-text-inverse: $color-white;
+$color-text-link: $color-tribune-teal;
+
+// sass-mq
+$mq-responsive: true;
+
+$mq-breakpoints: (
+  s: 544px,
+  m: 768px,
+  l: 992px,
+  xl: 1200px
+);
+
+$mq-media-type: screen;

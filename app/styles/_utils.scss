@@ -1,0 +1,11 @@
+.clearfix {
+  @include clearfix;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}

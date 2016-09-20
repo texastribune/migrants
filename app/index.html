@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Hello, world!
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ static('scripts/main.js') }}"></script>
+{% endblock scripts %}
