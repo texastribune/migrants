@@ -10,10 +10,20 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|PT+Serif:400,700">
   <link rel="stylesheet" href="{{ static('styles/main.css') }}">
 </head>
 <body>
+
+{% block masthead %}
+<header class="masthead" role="banner">
+  <div class="container">
+    <a href="http://www.texastribune.org/">
+      {{ inject('assets/images/logos/tribune-white.svg') }}
+    </a>
+  </div>
+</header>
+{% endblock masthead %}
 
 {% block content %}{% endblock content %}
 

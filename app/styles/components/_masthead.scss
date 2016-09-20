@@ -1,0 +1,17 @@
+.masthead {
+  padding-bottom: to-rem(10);
+  padding-left: to-rem(10);
+  padding-top: to-rem(10);
+  text-align: center;
+  margin-bottom: $gutter;
+  z-index: 10;
+  width: 100%;
+}
+
+.masthead svg {
+  @include site-logo-height(18);
+
+  @include mq($from: m) {
+    @include site-logo-height(20);
+  }
+}

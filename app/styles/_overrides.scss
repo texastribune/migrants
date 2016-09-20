@@ -14,7 +14,26 @@ html {
 
 // Set some helpful defaults
 body {
-  background-color: $color-white;
-  color: $color-text;
-  font-family: $font-sans-serif;
+  background-color: $color-primary;
+  color: $color-text-inverse;
+  font-family: $font-serif;
+}
+
+h1 {
+  font-family: $font-serif;
+  font-size: to-rem(40);
+  font-weight: 700;
+  margin-bottom: $gutter * 2;
+  text-align: center;
+}
+
+.dv-text {
+  @include font-size(18);
+  line-height: 1.5;
+  margin-bottom: $gutter;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: to-rem(600);
+  padding-left: $gutter;
+  padding-right: $gutter;
 }

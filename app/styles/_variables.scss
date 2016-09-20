@@ -3,11 +3,14 @@ $color-primary: hsl(0, 0%, 13%);
 $color-white: hsl(0, 0%, 100%);
 $color-tribune-teal: hsl(183, 100%, 28%);
 
+// Spacing
+$gutter: 1.25rem;
+
 // Typography
 $font-size-base: 16;
 
 $font-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif;
-$font-serif: Georgia, 'Times New Roman', Times, serif;
+$font-serif: 'PT Serif', Georgia, 'Times New Roman', Times, serif;
 
 $color-text: $color-primary;
 $color-text-inverse: $color-white;

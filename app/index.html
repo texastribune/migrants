@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
+{% from 'macros/prose.html' import prose %}
+
 {% block content %}
-Hello, world!
+
+<h1>{{ data.story.title }}</h1>
+
+{{ prose(data.story.prose, data.story, data) }}
 {% endblock content %}
 
 {% block scripts %}
