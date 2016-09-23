@@ -16,6 +16,8 @@ $color-text: $color-primary;
 $color-text-inverse: $color-white;
 $color-text-link: $color-tribune-teal;
 
+$photo-text-shadow: 1px 1px 1px $color-primary, 0 1px 1px $color-primary, 0 -1px 0 $color-primary, -1px 0 0 $color-primary;
+
 // sass-mq
 $mq-responsive: true;
 

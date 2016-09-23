@@ -4,7 +4,15 @@
 
 {% block content %}
 
-<h1>{{ data.story.title }}</h1>
+<!-- preload the image -->
+<img src="{{ static('assets/images/lede-art.jpg') }}" style="display: none;">
+
+<div class="header-image" style="background-image: url({{ static('assets/images/lede-art.jpg') }})">
+  <header class="header">
+    <h1 class="header__title">{{ data.story.title|widont }}</h1>
+    <p class="header__tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit animi omnis ipsum iure.</p>
+  </header>
+</div>
 
 {{ prose(data.story.prose, data.story, data) }}
 {% endblock content %}

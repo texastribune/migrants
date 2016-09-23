@@ -2,14 +2,16 @@
   padding-bottom: to-rem(10);
   padding-left: to-rem(10);
   padding-top: to-rem(10);
+  position: absolute;
   text-align: center;
-  margin-bottom: $gutter;
-  z-index: 10;
+  top: 0;
   width: 100%;
+  z-index: 10;
 }
 
 .masthead svg {
   @include site-logo-height(18);
+  opacity: 0.9;
 
   @include mq($from: m) {
     @include site-logo-height(20);

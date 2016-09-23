@@ -4,7 +4,7 @@
  * Where custom filters for Nunjucks should be added. Each key should be the
  * name of the filter, and each value should be a function it will call.
  *
- * (journalize comes built in and does not need to be added manually.)
+ * (`journalize` comes built in and does not need to be added manually.)
  *
  * Example:
  * module.exports = {
@@ -15,4 +15,10 @@
  * {{ num|square }}
  *
  */
-module.exports = {};
+module.exports = {
+  widont: (val) => {
+    const lastSpace = val.trim().lastIndexOf(' ');
+
+    return `${val.substring(0, lastSpace)}&nbsp;${val.substring(lastSpace + 1)}`;
+  }
+};
