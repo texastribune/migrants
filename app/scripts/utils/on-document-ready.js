@@ -5,7 +5,7 @@
  * @private
  * @param  {Function} callback
  */
-function onDocumentReady (callback) {
+export function onDocumentReady (callback) {
   // if we're still loading the page, let's set up a DOMContentLoaded event
   if (document.readyState === 'loading') {
     // set up our listener function so we can unset it once we use it
@@ -22,4 +22,12 @@ function onDocumentReady (callback) {
   }
 }
 
-export default onDocumentReady;
+/**
+ *
+ * A version of `onDocumentReady` that instead returns a Promise.
+ *
+ * @return {Promise}
+ */
+export function whenDocumentReady () {
+  return new Promise(onDocumentReady);
+}

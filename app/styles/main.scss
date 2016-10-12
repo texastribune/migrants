@@ -17,3 +17,8 @@
 // Components
 @import 'components/masthead';
 @import 'components/header';
+@import 'components/sections';
+
+.visible {
+  opacity: 1;
+}

@@ -7,14 +7,30 @@
 <!-- preload the image -->
 <img src="{{ static('assets/images/lede-art.jpg') }}" style="display: none;">
 
-<div class="header-image" style="background-image: url({{ static('assets/images/lede-art.jpg') }})">
-  <header class="header">
+<section class="story-section">
+<div class="header-image visible pin-fixed" style="background-image: url({{ static('assets/images/lede-art.jpg') }});">
+  <header class="header will-animate">
     <h1 class="header__title">{{ data.story.title|widont }}</h1>
     <p class="header__tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit animi omnis ipsum iure.</p>
   </header>
 </div>
+</section>
 
-{{ prose(data.story.prose, data.story, data) }}
+<section class="story-section">
+  <div class="prose-container">
+    {{ prose(data.story.prose, data.story, data) }}
+  </div>
+</section>
+
+{% for section in data.story.sections %}
+<section class="story-section">
+  <div class="header-image" style="background-image: url({{ static('assets/images/' + section.photo) }});"></div>
+  <div class="prose-container">
+    {{ prose(section.prose, data.story, data) }}
+  </div>
+</section>
+{% endfor %}
+
 {% endblock content %}
 
 {% block scripts %}

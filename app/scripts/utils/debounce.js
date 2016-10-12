@@ -19,7 +19,7 @@ function getTimeStamp () {
 }
 
 // Borrowed from underscore.js: http://underscorejs.org/#debounce
-export default function (func, wait, immediate) {
+export default function debounce (func, wait, immediate) {
   var timeout, args, context, timestamp, result;
 
   var later = function () {

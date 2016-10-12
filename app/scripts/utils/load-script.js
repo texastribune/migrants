@@ -15,7 +15,7 @@
  *   // anything that depends on that script loading
  * });
  */
-function loadScript (url, cb) {
+export function loadScript (url, cb) {
   // create the `script` element
   var script = document.createElement('script');
 
@@ -27,6 +27,19 @@ function loadScript (url, cb) {
 
   // attach the script to the document body
   document.body.appendChild(script);
+}
+
+/**
+ *
+ * A version of `loadScript` that instead returns a Promise.
+ *
+ * @param  {String} url The URL for the script to be loaded.
+ * @return {Promise}
+ */
+export function whenLoadScript (url) {
+  return new Promise(function (resolve) {
+    loadScript(url, resolve);
+  });
 }
 
 export default loadScript;

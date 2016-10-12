@@ -1,8 +1,9 @@
 .masthead {
+  backface-visibility: hidden;
   padding-bottom: to-rem(10);
   padding-left: to-rem(10);
   padding-top: to-rem(10);
-  position: absolute;
+  position: fixed;
   text-align: center;
   top: 0;
   width: 100%;
