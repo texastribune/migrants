@@ -35,6 +35,11 @@ export function loadScript (url, cb) {
  *
  * @param  {String} url The URL for the script to be loaded.
  * @return {Promise}
+ * @example
+ *
+ * whenLoadScript('backup.js').then(function() {
+ *   // anything that depends on that script loading
+ * });
  */
 export function whenLoadScript (url) {
   return new Promise(function (resolve) {

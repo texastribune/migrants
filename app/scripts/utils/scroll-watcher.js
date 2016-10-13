@@ -74,4 +74,4 @@ var scrollWatcher = function () {
   };
 };
 
-export default scrollWatcher();
+export default scrollWatcher(); // singleton

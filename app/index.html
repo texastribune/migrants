@@ -4,7 +4,18 @@
 
 {% block content %}
 
-<!-- preload the image -->
+<div class="sections">
+{% for section in data.story.sections %}
+<div class="section">
+  {% if loop.first %}
+  <div class="section__image" style="background-image: url({{ static('assets/images/lede-art.jpg') }});">
+  {% endif %}
+  <div class="section__placeholder"></div>
+</div>
+{% endfor %}
+</div>
+
+{#<!-- preload the image -->
 <img src="{{ static('assets/images/lede-art.jpg') }}" style="display: none;">
 
 <section class="story-section">
@@ -29,7 +40,7 @@
     {{ prose(section.prose, data.story, data) }}
   </div>
 </section>
-{% endfor %}
+{% endfor %} #}
 
 {% endblock content %}
 

@@ -2,7 +2,6 @@
  * Returns a basic `requestAnimationFrame` polyfill, if needed. Call whenever
  * you would normally use `window.requestAnimationFrame`.
  *
- * @private
  * @type {Function}
  */
 function raf () {
