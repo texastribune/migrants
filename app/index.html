@@ -8,26 +8,31 @@
 <img src="{{ static('assets/images/lede-art.jpg') }}" style="display: none;">
 
 <section class="story-section">
-<div class="header-image visible pin-fixed" style="background-image: url({{ static('assets/images/lede-art.jpg') }});">
+<div class="image visible pin-fixed" style="background-image: url({{ static('assets/images/lede-art.jpg') }});">
   <header class="header will-animate">
     <h1 class="header__title">{{ data.story.title|widont }}</h1>
     <p class="header__tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit animi omnis ipsum iure.</p>
   </header>
 </div>
+<div class="section__placeholder"></div>
 </section>
 
 <section class="story-section">
   <div class="prose-container">
     {{ prose(data.story.prose, data.story, data) }}
   </div>
+  <div class="section__placeholder"></div>
 </section>
 
 {% for section in data.story.sections %}
 <section class="story-section">
-  <div class="header-image" style="background-image: url({{ static('assets/images/' + section.photo) }});"></div>
+  <div class="image" style="background-image: url({{ static('assets/images/' + section.photo) }});">
+    <div class="cover"></div>
+  </div>
   <div class="prose-container">
     {{ prose(section.prose, data.story, data) }}
   </div>
+  <div class="section__placeholder"></div>
 </section>
 {% endfor %}
 

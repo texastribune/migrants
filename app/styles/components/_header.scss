@@ -1,16 +1,15 @@
-.header-image {
-  background-color: $color-primary;
+.image {
   background-size: cover;
   background-position: 70% center;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 0;
-  transition: opacity 3s ease-out;
+  transition: opacity 1s ease-out;
   bottom: auto;
   min-height: 100vh;
   width: 100%;
   opacity: 0;
-  z-index: 1;
+  z-index: -1;
 
   @include mq($from: m) {
     background-position: center center;
@@ -18,8 +17,7 @@
 }
 
 .pin-fixed {
-  backface-visibility: hidden;
-  position: fixed;
+  // visibility: visible;
 }
 
 .pin-bottom {

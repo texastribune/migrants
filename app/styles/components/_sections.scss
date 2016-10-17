@@ -1,13 +1,11 @@
 .story-section {
-  align-items: flex-end;
-  background-color: $color-primary;
   color: $color-white;
-  display: flex;
-  justify-content: center;
+  padding-top: 4rem;
   position: relative;
+  text-align: center;
   width: 100%;
+}
 
-  &:nth-child(odd) {
-    background-color: grey;
-  }
+.section__placeholder {
+  min-height: 110vh;
 }
