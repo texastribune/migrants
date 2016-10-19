@@ -1,20 +1,37 @@
 .masthead {
+  align-items: center;
   backface-visibility: hidden;
-  padding-bottom: to-rem(10);
-  padding-left: to-rem(10);
-  padding-top: to-rem(10);
+  display: flex;
+  // height: to-rem(40);
+  justify-content: space-between;
+  padding: ($gutter * .5) ($gutter * .75);
   position: fixed;
-  text-align: center;
   top: 0;
   width: 100%;
   z-index: 10;
 }
 
-.masthead svg {
+.masthead .tribune-logo {
   @include site-logo-height(18);
   opacity: 0.9;
 
   @include mq($from: m) {
     @include site-logo-height(20);
+  }
+}
+
+.socials {
+  color: transparentize($color-white, .15);
+  // position: absolute;
+  // right: 0;
+}
+
+.socials .icon {
+  font-size: 1.375rem;
+  margin-right: $gutter / 4;
+  vertical-align: middle;
+
+  &:last-child {
+    margin-right: 0;
   }
 }

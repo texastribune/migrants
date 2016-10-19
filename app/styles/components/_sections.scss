@@ -1,11 +1,23 @@
-.story-section {
+.section {
   color: $color-white;
-  padding-top: 4rem;
+  padding-top: 8rem;
   position: relative;
   text-align: center;
   width: 100%;
+
+  &:first-child {
+    padding-top: 0;
+  }
 }
 
 .section__placeholder {
-  min-height: 110vh;
+  min-height: 100vh;
+
+  .section--starter & {
+    min-height: 150vh;
+  }
+
+  .section--closer & {
+    min-height: 25vh;
+  }
 }

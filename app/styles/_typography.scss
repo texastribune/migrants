@@ -1,6 +1,7 @@
 .header {
   bottom: 0;
   color: $color-text-inverse;
+  font-family: $font-serif;
   margin-bottom: $gutter * 2;
   margin-right: $gutter;
   opacity: 0;
@@ -19,7 +20,6 @@
 }
 
 .header__title {
-  font-family: $font-serif;
   font-size: to-rem(32);
   letter-spacing: 0.01em;
   line-height: 1.1;
@@ -31,10 +31,31 @@
   }
 }
 
+.header__byline {
+  font-family: $font-sans-serif;
+  font-size: to-rem(14);
+  margin-bottom: $gutter;
+  text-shadow: $photo-text-shadow;
+
+  @include mq($from: m) {
+    font-size: 1.125vw;
+  }
+}
+
+.header__pub_date {
+  font-family: $font-sans-serif;
+  font-size: to-rem(14);
+  text-shadow: $photo-text-shadow;
+
+  @include mq($from: m) {
+    font-size: 1.125vw;
+  }
+}
+
 .header__tag {
-  @include font-size(18);
-  font-family: $font-serif;
+  font-size: to-rem(18);
   line-height: 1.5;
+  margin-bottom: $gutter;
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
@@ -42,14 +63,17 @@
   }
 }
 
-.prose-container {
-  background-color: rgba(0, 0, 0, 0.75);
+.section__prose {
   margin-left: auto;
   margin-right: auto;
   max-width: to-rem(800);
   text-align: left;
   transition: opacity .5s ease-in;
   padding: $gutter ($gutter / 2);
+
+  .section--has-media & {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
 }
 
 .prose {
@@ -69,4 +93,43 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  a {
+    color: $color-text-inverse;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.prose--push {
+  margin-bottom: $gutter * 4;
+}
+
+.prose__media {
+  margin-bottom: $gutter;
+}
+
+.prose__map {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.prose__media-caption {
+  @include font-size(14);
+  color: darken($color-text-inverse, 30%);
+  margin-top: $gutter / 4;
+  text-align: right;
+}
+
+.prose__image {
+  display: block;
+  margin: 0 auto $gutter;
+}
+
+.prose__subtitle {
+  @include font-size(24);
+  margin-bottom: $gutter * 2;
+  text-align: center;
 }

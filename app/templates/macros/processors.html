@@ -2,6 +2,12 @@
 <p class="prose">{{ value }}</p>
 {% endmacro %}
 
+{% macro map(value) %}
+<figure class="prose__media">
+  <img class="prose__map" src="{{ static('assets/images/' + value) }}">
+</figure>
+{% endmacro %}
+
 {% macro list(value) %}
 <ul>
   {% for item in value %}

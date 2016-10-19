@@ -4,37 +4,47 @@
 
 {% block content %}
 
-<!-- preload the image -->
-<img src="{{ static('assets/images/lede-art.jpg') }}" style="display: none;">
+<!-- preload the first image -->
+<img src="{{ static('assets/images/' + data.story.intro.photo) }}" style="display: none;">
 
-<section class="story-section">
-<div class="image visible pin-fixed" style="background-image: url({{ static('assets/images/lede-art.jpg') }});">
-  <header class="header will-animate">
-    <h1 class="header__title">{{ data.story.title|widont }}</h1>
-    <p class="header__tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit animi omnis ipsum iure.</p>
-  </header>
+<div class="sections">
+  <section class="section section--starter">
+    <div class="section__media section__media--image visible pin-fixed" style="background-image: url({{ static('assets/images/' + data.story.intro.photo) }})">
+      <header class="header will-animate">
+        <h1 class="header__title">{{ data.story.intro.title|widont }}</h1>
+        <p class="header__tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit animi omnis ipsum iure.</p>
+        <p class="header__byline">{{ data.story.intro.byline }}</p>
+        <p class="header__pub_date">{{ data.story.intro.pub_date }}</p>
+      </header>
+    </div>
+    <div class="section__placeholder"></div>
+  </section>
+
+  {% for section in data.story.sections %}
+  <section class="section{% if not section.blur_photo %} section--has-media{% endif %}">
+    {% if section.photo %}
+    <div class="section__media section__media--image" style="background-image: url({{ static('assets/images/' + section.photo) }} )" data-bg-src="{{ static('assets/images/' + section.photo) }}" {% if section.blur_photo %}data-blur-photo="true"{% endif %}>
+      <div class="cover" style="opacity: 0;"></div>
+    </div>
+    <noscript><img src="{{ static('assets/images/' + section.photo) }}" width="100%"></noscript>
+    {% endif %}
+    <div class="section__prose">
+      {{ prose(section.prose, data.story, data) }}
+    </div>
+    <div class="section__placeholder"></div>
+  </section>
+  {% endfor %}
+
+  <section class="section section--closer">
+    <div class="section__prose">
+      <img class="prose__image" src="https://static.texastribune.org/media/images/2016/01/29/TT-BSP_LogoA-sml.jpg" alt="Bordering on Security" style="width: 400px;">
+      <p class="prose prose--push">The Texas Tribune is taking a yearlong look at the issues of border security and immigration. This part of the project focuses on how violent gang warfare and grinding poverty are driving new waves of Central American immigration to the United States. <a href="https://apps.texastribune.org/bordering-on-insecurity/">Sign up to get story alerts</a>.</p>
+      <p class="prose__subtitle">Credits</p>
+      <p class="prose">Reporting by Alexa Ura. Photography by Martin do Nascimento. Map design and story production by Ryan Murphy and Ben Hasson.</p>
+    </div>
+    <div class="section__placeholder"></div>
+  </section>
 </div>
-<div class="section__placeholder"></div>
-</section>
-
-<section class="story-section">
-  <div class="prose-container">
-    {{ prose(data.story.prose, data.story, data) }}
-  </div>
-  <div class="section__placeholder"></div>
-</section>
-
-{% for section in data.story.sections %}
-<section class="story-section">
-  <div class="image" style="background-image: url({{ static('assets/images/' + section.photo) }});">
-    <div class="cover"></div>
-  </div>
-  <div class="prose-container">
-    {{ prose(section.prose, data.story, data) }}
-  </div>
-  <div class="section__placeholder"></div>
-</section>
-{% endfor %}
 
 {% endblock content %}
 

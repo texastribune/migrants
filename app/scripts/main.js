@@ -6,11 +6,11 @@ import scale from './utils/scale';
 import scrollWatcher from './utils/scroll-watcher';
 
 const header = select('.header');
-const headerImage = select('.image');
+const headerImage = select('.section__media');
 const heightPercent = 1;
 
 let storedInnerWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
+// const viewportHeight = window.innerHeight;
 
 const resizeImage = debounce(() => {
   const newInnerWidth = window.innerWidth;
@@ -29,19 +29,28 @@ headerImage.style.height = `${window.innerHeight * heightPercent}px`;
 
 setTimeout(() => header.classList.add('visible'), 750);
 
-const sections = selectAll('.story-section').map((el, index) => {
-  const image = select('.image', el);
+const sections = selectAll('.section').map((el, idx) => {
+  const header = select('.header', el);
+  const media = select('.section__media', el);
+  const image = select('.section__media--image', el);
+  const video = select('.section__media--video video', el);
 
-  return {
-    index,
+  const section = {
+    idx,
     el,
+    header,
+    media,
     image,
-    cover: image ? select('.cover', image) : null,
-    prose: select('.prose-container', el),
+    blurImage: image ? image.getAttribute('data-blur-photo') || false : false,
+    video,
+    cover: media ? select('.cover', image) : null,
+    prose: select('.section__prose', el),
     inViewport: false,
     topVisible: false,
     bottomVisible: false
   };
+
+  return section;
 });
 
 const wHeight = window.innerHeight;
@@ -49,7 +58,6 @@ const blurScale = scale([300, 0], [0, 5], true);
 const opacityScale = scale([300, 0], [0, 1], true);
 
 function onScroll ({ offset }) {
-  // const scrollTop = window.pageYOffset;
   const scrollBottom = wHeight + offset;
 
   sections.forEach((section, idx) => {
@@ -65,25 +73,39 @@ function onScroll ({ offset }) {
 
     const distanceFromBottom = rect.bottom - wHeight;
 
-    if (section.image) section.image.style.filter = `blur(${blurScale(distanceFromBottom)}px)`;
-    if (section.cover) section.cover.style.opacity = opacityScale(distanceFromBottom);
+    if (section.blurImage) {
+      if (section.media) section.media.style.filter = `blur(5px)`;
+      if (section.cover) section.cover.style.opacity = 0.9;
+    } else {
+      if (section.media) section.media.style.filter = `blur(${blurScale(distanceFromBottom)}px)`;
+      if (section.cover) section.cover.style.opacity = opacityScale(distanceFromBottom);
+    }
 
     if (section.inViewport && !wasInViewport) {
       console.info('now in viewport: ', section.index);
-      if (section.image) section.image.classList.add('pin-fixed');
-      if (section.image) section.image.classList.add('visible');
+      if (section.media) section.media.classList.add('pin-fixed');
+      if (section.media) section.media.classList.add('visible');
+      if (section.video) {
+        section.video.currentTime = 0;
+        section.video.play();
+      }
     }
 
     if (!section.inViewport && wasInViewport) {
       console.info('leaving viewport: ', section.index);
-      if (section.image) section.image.classList.remove('pin-fixed');
-      if (section.image) section.image.classList.remove('visible');
+      if (section.media) {
+        section.media.classList.remove('pin-fixed');
+        section.media.classList.remove('visible');
+      }
+
+      if (section.header) section.header.classList.remove('visible');
+      if (section.video) section.video.pause();
     }
 
     if (section.inViewport && section.topVisible && !topWasVisible) {
       console.info('top entering viewport: ', section.index);
-      // if (section.image) section.image.classList.add('pin-fixed');
-      // if (section.image) section.image.classList.add('visible');
+      // if (section.media) section.media.classList.add('pin-fixed');
+      // if (section.media) section.media.classList.add('visible');
     }
 
     if (!section.topVisible && topWasVisible) {
@@ -92,14 +114,14 @@ function onScroll ({ offset }) {
 
     if (section.bottomVisible && !bottomWasVisible) {
       console.info('bottom entering viewport: ', section.index);
-      if (section.image) section.image.classList.remove('pin-fixed');
-      if (section.image) section.image.classList.remove('visible');
+      if (section.media) section.media.classList.remove('pin-fixed');
+      if (section.media) section.media.classList.remove('visible');
     }
 
     if (!section.bottomVisible && bottomWasVisible) {
       console.info('bottom leaving viewport: ', section.index);
-      if (section.image) section.image.classList.add('pin-fixed');
-      if (section.image) section.image.classList.add('visible');
+      if (section.media) section.media.classList.add('pin-fixed');
+      if (section.media) section.media.classList.add('visible');
     }
   });
 }
