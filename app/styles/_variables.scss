@@ -2,6 +2,7 @@
 $color-primary: hsl(0, 0%, 13%);
 $color-white: hsl(0, 0%, 100%);
 $color-tribune-teal: hsl(183, 100%, 28%);
+$color-migrants: hsl(9, 60%, 56%);
 
 // Spacing
 $gutter: 1.25rem;
@@ -16,7 +17,7 @@ $color-text: $color-primary;
 $color-text-inverse: $color-white;
 $color-text-link: $color-tribune-teal;
 
-$photo-text-shadow: 1px 1px 1px $color-primary, 0 1px 1px $color-primary, 0 -1px 0 $color-primary, -1px 0 0 $color-primary;
+$photo-text-shadow: 1px 1px 1px transparentize($color-primary, 0.15), 0 1px 1px transparentize($color-primary, 0.15), 0 -1px 0 transparentize($color-primary, 0.15), -1px 0 0 transparentize($color-primary, 0.15);
 
 // sass-mq
 $mq-responsive: true;

@@ -8,6 +8,10 @@
 </figure>
 {% endmacro %}
 
+{% macro section_head(value) %}
+<h2 class="prose prose--section-head">{{ value }}</h2>
+{% endmacro %}
+
 {% macro list(value) %}
 <ul>
   {% for item in value %}

@@ -1,23 +1,32 @@
 .section {
   color: $color-white;
-  padding-top: 8rem;
   position: relative;
   text-align: center;
   width: 100%;
+
+  @include mq($from: m) {
+    padding-top: 8rem;
+  }
 
   &:first-child {
     padding-top: 0;
   }
 }
 
+.section--starter {
+  margin-bottom: $gutter * 2;
+}
+
 .section__placeholder {
-  min-height: 100vh;
+  @include mq($from: m) {
+    min-height: 100vh;
 
-  .section--starter & {
-    min-height: 150vh;
-  }
+    .section--starter & {
+      min-height: 150vh;
+    }
 
-  .section--closer & {
-    min-height: 25vh;
+    .section--closer & {
+      min-height: 25vh;
+    }
   }
 }

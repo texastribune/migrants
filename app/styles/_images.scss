@@ -1,0 +1,9 @@
+.section__image--mobile {
+  @include mq($from: m) {
+    display: none;
+  }
+}
+
+.section__image--hide-mobile {
+  display: none;
+}

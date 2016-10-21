@@ -1,17 +1,26 @@
 .masthead {
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
   backface-visibility: hidden;
   display: flex;
-  // height: to-rem(40);
   justify-content: space-between;
-  padding: ($gutter * .5) ($gutter * .75);
+  min-width: 100%;
+  opacity: 0;
+  padding: ($gutter * .5) ($gutter * .5);
   position: fixed;
   top: 0;
+  transition: opacity 300ms ease-out;
   width: 100%;
   z-index: 10;
+
+  @include mq($from: m) {
+    background-color: transparent;
+    opacity: 1;
+    padding: ($gutter * .5) ($gutter * .75);
+  }
 }
 
-.masthead .tribune-logo {
+.tribune-logo {
   @include site-logo-height(18);
   opacity: 0.9;
 
@@ -22,8 +31,6 @@
 
 .socials {
   color: transparentize($color-white, .15);
-  // position: absolute;
-  // right: 0;
 }
 
 .socials .icon {
@@ -33,5 +40,16 @@
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+.mobile-sticky-logo {
+  display: none;
+  margin: ($gutter * .5) auto 0;
+  position: absolute;
+  width: 100%;
+
+  .is-simple & {
+    display: block;
   }
 }

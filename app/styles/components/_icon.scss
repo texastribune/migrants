@@ -5,4 +5,17 @@
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+  transition: fill 250ms ease-in;
+}
+
+.icon-facebook {
+  &:hover {
+    fill: hsl(220, 63%, 47%);
+  }
+}
+
+.icon-twitter {
+  &:hover {
+    fill: hsl(206, 82%, 63%);
+  }
 }

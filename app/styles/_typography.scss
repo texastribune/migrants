@@ -1,28 +1,31 @@
 .header {
-  bottom: 0;
   color: $color-text-inverse;
   font-family: $font-serif;
-  margin-bottom: $gutter * 2;
-  margin-right: $gutter;
+  line-height: 1.4;
   opacity: 0;
+  padding: 0 ($gutter / 2);
   position: absolute;
   text-align: center;
   transition: opacity 3s ease-out;
+  transform: translate3d(0, 75%, 0);
   z-index: 2;
 
   @include mq($from: m) {
+    bottom: 0;
     left: 0;
     margin-bottom: $gutter * 1.5;
     margin-left: $gutter * 1.5;
+    margin-right: $gutter;
     max-width: 50%;
     text-align: start;
+    transform: none;
   }
 }
 
 .header__title {
   font-size: to-rem(32);
   letter-spacing: 0.01em;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: $gutter;
   text-shadow: $photo-text-shadow;
 
@@ -54,7 +57,6 @@
 
 .header__tag {
   font-size: to-rem(18);
-  line-height: 1.5;
   margin-bottom: $gutter;
   text-shadow: $photo-text-shadow;
 
@@ -64,16 +66,29 @@
 }
 
 .section__prose {
-  margin-bottom: to-rem(10) * -1;
   margin-left: auto;
   margin-right: auto;
   max-width: to-rem(800);
+  padding-bottom: $gutter * 2;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
   text-align: left;
   transition: opacity .5s ease-in;
-  padding: $gutter ($gutter / 2);
+  width: 100%;
 
   .section--has-media & {
-    background-color: rgba(0, 0, 0, 0.75);
+    padding-top: $gutter * 2;
+  }
+
+  @include mq($from: m) {
+    margin-bottom: to-rem(10) * -1;
+    padding-bottom: $gutter;
+    padding-top: $gutter;
+
+    .section--has-media & {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding-top: $gutter;
+    }
   }
 }
 
@@ -110,6 +125,14 @@
 
 .prose__media {
   margin-bottom: $gutter;
+}
+
+.prose--section-head {
+  @include font-size(20);
+  color: $color-migrants;
+  font-family: $font-sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .prose__map {
