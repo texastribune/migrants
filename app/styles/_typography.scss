@@ -23,7 +23,7 @@
   }
 
   @include mq($from: m, $until: header-tweak) {
-    max-width: 65%;
+    max-width: 68%;
   }
 }
 
@@ -35,7 +35,7 @@
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
-    @include responsive-vw(3.5vw, 40px);
+    @include responsive-vw(4vw, 40px);
   }
 }
 
@@ -125,14 +125,20 @@
 
   .section__prose--end & {
     &:last-child:after {
-      content: ' \2014\00a0\25A0';
-      font-size: 1.1em;
+      content: ' \25AD';
+      font-size: .75em;
+      font-weight: 900;
+      margin-left: 4px;
     }
   }
 }
 
 .prose--push {
   margin-bottom: $gutter * 6;
+}
+
+.prose--italic {
+  font-style: italic;
 }
 
 .prose__media {
@@ -148,7 +154,7 @@
   text-transform: uppercase;
 
   @include mq($from: m) {
-    @include font-size(20);
+    @include font-size(24);
   }
 }
 
