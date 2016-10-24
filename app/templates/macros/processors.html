@@ -8,8 +8,16 @@
 </figure>
 {% endmacro %}
 
+{% macro svg_map(value) %}
+<figure class="prose__media">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 800 465">
+    <use xlink:href="#viz">
+  </svg>
+</figure>
+{% endmacro %}
+
 {% macro section_head(value) %}
-<h2 class="prose prose--section-head">{{ value }}</h2>
+<h2 class="prose prose--section-head"><span class="header-dot">&bull;</span> {{ value }}</h2>
 {% endmacro %}
 
 {% macro list(value) %}

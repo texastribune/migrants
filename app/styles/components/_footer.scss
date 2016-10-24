@@ -1,0 +1,82 @@
+.footer {
+  @include font-size(14);
+  align-items: center;
+  color: $color-text-inverse;
+  display: flex;
+  font-family: $font-sans-serif;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: to-rem(1200);
+  padding-bottom: $gutter / 2;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  padding-top: $gutter / 2;
+  width: 100%;
+
+  @include mq($from: footer-break) {
+    @include font-size(12);
+    flex-wrap: nowrap;
+  }
+}
+
+.footer__copyright {
+  margin-bottom: $gutter;
+  text-align: center;
+  width: 100%;
+
+  @include mq($from: footer-break) {
+    flex: 1 0 0;
+    margin-bottom: 0;
+    text-align: left;
+    width: auto;
+  }
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  @include mq($from: footer-break) {
+    text-align: left;
+    flex-wrap: nowrap;
+  }
+}
+
+.footer__nav-item {
+  margin-bottom: $gutter;
+  width: 50%;
+
+  @include mq($from: footer-break) {
+    border-left: 1px solid $color-text-inverse;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+    margin-bottom: 0;
+    width: auto;
+
+    &:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.footer__link {
+  color: $color-text-inverse;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer__link--donate {
+  color: $color-tribune-yellow;
+  font-weight: 700;
+}

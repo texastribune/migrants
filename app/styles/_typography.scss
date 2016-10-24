@@ -1,13 +1,14 @@
 .header {
+  bottom: 0;
   color: $color-text-inverse;
   font-family: $font-serif;
   line-height: 1.4;
   opacity: 0;
-  padding: 0 ($gutter / 2);
+  padding: 0 ($gutter);
   position: absolute;
   text-align: center;
   transition: opacity 3s ease-out;
-  transform: translate3d(0, 75%, 0);
+  transform: translate3d(0, -30%, 0);
   z-index: 2;
 
   @include mq($from: m) {
@@ -70,8 +71,6 @@
   margin-right: auto;
   max-width: to-rem(800);
   padding-bottom: $gutter * 2;
-  padding-left: $gutter / 2;
-  padding-right: $gutter / 2;
   text-align: left;
   transition: opacity .5s ease-in;
   width: 100%;
@@ -83,6 +82,8 @@
   @include mq($from: m) {
     margin-bottom: to-rem(10) * -1;
     padding-bottom: $gutter;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
     padding-top: $gutter;
 
     .section--has-media & {
@@ -128,11 +129,20 @@
 }
 
 .prose--section-head {
-  @include font-size(20);
-  color: $color-migrants;
+  @include font-size(18);
+  color: $color-white;
   font-family: $font-sans-serif;
   font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+
+  @include mq($from: m) {
+    @include font-size(20);
+  }
+}
+
+.header-dot {
+  color: $color-migrants;
 }
 
 .prose__map {
@@ -150,6 +160,13 @@
 .prose__image {
   display: block;
   margin: 0 auto $gutter;
+}
+
+.prose__image--bsp {
+  padding-left: $gutter;
+  padding-right: $gutter;
+  max-width: to-rem(400);
+  width: 100%;
 }
 
 .prose__subtitle {

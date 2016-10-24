@@ -31,7 +31,6 @@ const sections = selectAll('.section').map((el, idx) => {
   const header = select('.header', el);
   const media = select('.section__media', el);
   const image = select('.section__media--image', el);
-  const video = select('.section__media--video video', el);
 
   const section = {
     idx,
@@ -40,7 +39,6 @@ const sections = selectAll('.section').map((el, idx) => {
     media,
     image,
     blurImage: image ? image.getAttribute('data-blur-photo') || false : false,
-    video,
     cover: media ? select('.cover', image) : null,
     prose: select('.section__prose', el),
     inViewport: false,
@@ -83,10 +81,8 @@ function onScroll ({ offset }) {
       console.info('now in viewport: ', section.index);
       if (section.media) section.media.classList.add('pin-fixed');
       if (section.media) section.media.classList.add('visible');
-      if (section.video) {
-        section.video.currentTime = 0;
-        section.video.play();
-      }
+
+      if (section.header) section.header.classList.add('visible');
     }
 
     if (!section.inViewport && wasInViewport) {
@@ -97,7 +93,6 @@ function onScroll ({ offset }) {
       }
 
       if (section.header) section.header.classList.remove('visible');
-      if (section.video) section.video.pause();
     }
 
     if (section.inViewport && section.topVisible && !topWasVisible) {

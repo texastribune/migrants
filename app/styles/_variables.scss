@@ -2,6 +2,7 @@
 $color-primary: hsl(0, 0%, 13%);
 $color-white: hsl(0, 0%, 100%);
 $color-tribune-teal: hsl(183, 100%, 28%);
+$color-tribune-yellow: hsl(46, 100%, 56%);
 $color-migrants: hsl(9, 60%, 56%);
 
 // Spacing
@@ -17,7 +18,9 @@ $color-text: $color-primary;
 $color-text-inverse: $color-white;
 $color-text-link: $color-tribune-teal;
 
-$photo-text-shadow: 1px 1px 1px transparentize($color-primary, 0.15), 0 1px 1px transparentize($color-primary, 0.15), 0 -1px 0 transparentize($color-primary, 0.15), -1px 0 0 transparentize($color-primary, 0.15);
+$photo-transparency: transparentize($color-primary, 0.5);
+
+$photo-text-shadow: 1px 1px 1px $photo-transparency, 0 0 3px $photo-transparency;
 
 // sass-mq
 $mq-responsive: true;
@@ -26,7 +29,9 @@ $mq-breakpoints: (
   s: 544px,
   m: 768px,
   l: 992px,
-  xl: 1200px
+  xl: 1200px,
+
+  footer-break: 850px
 );
 
 $mq-media-type: screen;

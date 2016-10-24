@@ -21,6 +21,7 @@
 @import 'components/sections';
 @import 'components/video';
 @import 'components/icon';
+@import 'components/footer';
 
 .visible {
   opacity: 1;
@@ -33,4 +34,8 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.svg-defs {
+  display: none;
 }

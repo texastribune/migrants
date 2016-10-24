@@ -1,10 +1,23 @@
-<!doctype html>
+<!doctype html>{% import 'macros/shares.html' as shares %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{ data.story.intro.title }} | The Texas Tribune</title>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@texastribune">
+  <meta name="twitter:creator" content="@texastribune">
+  <meta property="og:url" content="{{ staticAbsolute('', true) }}">
+  <meta property="og:title" content="{{ data.story.intro.title }}">
+  <meta property="og:type" content="article">
+  <meta property="article:publisher" content="https://www.facebook.com/texastribune">
+  <meta property="article:published_time" content="2016-10-27">
+  <meta property="og:description" content="{{ data.story.facebook_text }}">
+  <meta property="og:site_name" content="The Texas Tribune">
+  <meta property="og:image" content="{{ staticAbsolute('assets/images/share-art.png', true) }}">
+  <meta property="fb:app_id" content="154122474650943">
 
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -15,25 +28,35 @@
 </head>
 <body>
 
+<div class="svg-defs">
+{{ inject('assets/images/city-routes.svg') }}
+</div>
+
 {% block masthead %}
 <header class="masthead" role="banner">
   <a href="http://www.texastribune.org/">
     {{ inject('assets/images/logos/tribune-white.svg') }}
   </a>
   <div class="socials">
-    <svg class="icon icon-facebook" viewBox="0 0 19 32">
-      <title>Facebook</title>
-      <path d="M17.125 0.214v4.714h-2.804q-1.536 0-2.071 0.643t-0.536 1.929v3.375h5.232l-0.696 5.286h-4.536v13.554h-5.464v-13.554h-4.554v-5.286h4.554v-3.893q0-3.321 1.857-5.152t4.946-1.83q2.625 0 4.071 0.214z"></path>
-    </svg>
-    <svg class="icon icon-twitter" viewBox="0 0 30 32">
-      <title>Twitter</title>
-      <path d="M28.929 7.286q-1.196 1.75-2.893 2.982 0.018 0.25 0.018 0.75 0 2.321-0.679 4.634t-2.063 4.437-3.295 3.759-4.607 2.607-5.768 0.973q-4.839 0-8.857-2.589 0.625 0.071 1.393 0.071 4.018 0 7.161-2.464-1.875-0.036-3.357-1.152t-2.036-2.848q0.589 0.089 1.089 0.089 0.768 0 1.518-0.196-2-0.411-3.313-1.991t-1.313-3.67v-0.071q1.214 0.679 2.607 0.732-1.179-0.786-1.875-2.054t-0.696-2.75q0-1.571 0.786-2.911 2.161 2.661 5.259 4.259t6.634 1.777q-0.143-0.679-0.143-1.321 0-2.393 1.688-4.080t4.080-1.688q2.5 0 4.214 1.821 1.946-0.375 3.661-1.393-0.661 2.054-2.536 3.179 1.661-0.179 3.321-0.893z"></path>
-    </svg>
+    <a class="socials__link" href="{{ shares.facebook(staticAbsolute('', true), staticAbsolute('', true)) }}">
+      <svg class="icon icon-facebook" viewBox="0 0 19 32">
+        <title>Facebook</title>
+        <path d="M17.125 0.214v4.714h-2.804q-1.536 0-2.071 0.643t-0.536 1.929v3.375h5.232l-0.696 5.286h-4.536v13.554h-5.464v-13.554h-4.554v-5.286h4.554v-3.893q0-3.321 1.857-5.152t4.946-1.83q2.625 0 4.071 0.214z"></path>
+      </svg>
+    </a>
+    <a class="socials__link" href="{{ shares.twitter(staticAbsolute('', true), data.story.twitter_text) }}">
+      <svg class="icon icon-twitter" viewBox="0 0 30 32">
+        <title>Twitter</title>
+        <path d="M28.929 7.286q-1.196 1.75-2.893 2.982 0.018 0.25 0.018 0.75 0 2.321-0.679 4.634t-2.063 4.437-3.295 3.759-4.607 2.607-5.768 0.973q-4.839 0-8.857-2.589 0.625 0.071 1.393 0.071 4.018 0 7.161-2.464-1.875-0.036-3.357-1.152t-2.036-2.848q0.589 0.089 1.089 0.089 0.768 0 1.518-0.196-2-0.411-3.313-1.991t-1.313-3.67v-0.071q1.214 0.679 2.607 0.732-1.179-0.786-1.875-2.054t-0.696-2.75q0-1.571 0.786-2.911 2.161 2.661 5.259 4.259t6.634 1.777q-0.143-0.679-0.143-1.321 0-2.393 1.688-4.080t4.080-1.688q2.5 0 4.214 1.821 1.946-0.375 3.661-1.393-0.661 2.054-2.536 3.179 1.661-0.179 3.321-0.893z"></path>
+      </svg>
+    </a>
   </div>
 </header>
 {% endblock masthead %}
 
 {% block content %}{% endblock content %}
+
+{% include 'includes/footer.html' %}
 
 {% block inline_data %}{% endblock inline_data %}
 {% block scripts %}

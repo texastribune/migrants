@@ -22,6 +22,7 @@
 
 .tribune-logo {
   @include site-logo-height(18);
+  filter: drop-shadow(1px 1px 1px transparentize($color-primary, .5));
   opacity: 0.9;
 
   @include mq($from: m) {
@@ -31,16 +32,22 @@
 
 .socials {
   color: transparentize($color-white, .15);
+  filter: drop-shadow(1px 1px 1px transparentize($color-primary, .5));
 }
 
-.socials .icon {
-  font-size: 1.375rem;
-  margin-right: $gutter / 4;
-  vertical-align: middle;
+.socials__link {
+  color: transparentize($color-white, .15);
+  margin-right: $gutter / 2;
+  text-decoration: none;
 
   &:last-child {
     margin-right: 0;
   }
+}
+
+.socials .icon {
+  font-size: 1.5rem;
+  vertical-align: middle;
 }
 
 .mobile-sticky-logo {

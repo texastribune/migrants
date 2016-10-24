@@ -1,6 +1,8 @@
+const path = require('path');
 const webpack = require('webpack');
 
 const config = require('./webpack.config');
+const projectConfig = require('./project.config');
 
 config.debug = false;
 config.devtool = 'source-map';
@@ -18,5 +20,7 @@ config.plugins.push(
     }
   })
 );
+
+config.output.publicPath = '/' + path.join(projectConfig.folder, '/scripts/');
 
 module.exports = config;

@@ -8,9 +8,9 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/dist/scripts'),
-    publicPath: '/scripts',
+    publicPath: '/scripts/',
     filename: '[name].js',
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].[hash].chunk.js'
   },
   module: {
     loaders: [
