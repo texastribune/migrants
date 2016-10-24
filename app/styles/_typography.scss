@@ -17,9 +17,13 @@
     margin-bottom: $gutter * 1.5;
     margin-left: $gutter * 1.5;
     margin-right: $gutter;
-    max-width: 50%;
+    max-width: 55%;
     text-align: start;
     transform: none;
+  }
+
+  @include mq($from: m, $until: header-tweak) {
+    max-width: 65%;
   }
 }
 
@@ -31,7 +35,7 @@
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
-    font-size: 3.5vw;
+    @include responsive-vw(3.5vw, 40px);
   }
 }
 
@@ -42,7 +46,7 @@
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
-    font-size: 1.125vw;
+    @include responsive-vw(1.125vw, 14px);
   }
 }
 
@@ -52,7 +56,7 @@
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
-    font-size: 1.125vw;
+    @include responsive-vw(1.125vw, 14px);
   }
 }
 
@@ -62,7 +66,7 @@
   text-shadow: $photo-text-shadow;
 
   @include mq($from: m) {
-    font-size: 1.75vw;
+    @include responsive-vw(1.75vw, 18px);
   }
 }
 

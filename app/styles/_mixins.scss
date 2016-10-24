@@ -13,7 +13,7 @@
 // same time.
 @mixin font-size($size) {
   @if type-of($size) != 'number' {
-    @warn inspect($val) + ' was passed to font-size(), but it is not a number.';
+    @warn inspect($val) + ' was passed to `font-size`, but it is not a number.';
     @return $size;
   }
 
@@ -24,6 +24,22 @@
   }
 
   font-size: to-rem($size);
+}
+
+@mixin responsive-vw($vw, $min) {
+  @if type-of($vw) != 'number' {
+    @warn inspect($vw) + ' was passed to `responsive-vw`, but it is not a number.';
+    @return $vw;
+  }
+
+  $vw-unitless: if(unit($vw) == 'vw', $vw / 1vw, $vw);
+  $breakpoint: mq-px2em($min / $vw-unitless * 100);
+
+  @media (max-width: #{$breakpoint}) {
+    font-size: to-rem($min);
+  }
+
+  font-size: $vw;
 }
 
 // site-logo-height
