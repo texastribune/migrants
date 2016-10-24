@@ -34,7 +34,7 @@
     <img class="section__image section__image--mobile{% if section.blur_photo %} section__image--hide-mobile{% endif %}" src="{{ static('assets/images/' + section.photo) }}" width="100%">
     <noscript><img src="{{ static('assets/images/' + section.photo) }}" width="100%"></noscript>
     {% endif %}
-    <div class="section__prose">
+    <div class="section__prose{% if loop.last %} section__prose--end{% endif %}">
       {{ prose(section.prose, data.story, data) }}
     </div>
     <div class="section__placeholder"></div>

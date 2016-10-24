@@ -122,10 +122,17 @@
       text-decoration: none;
     }
   }
+
+  .section__prose--end & {
+    &:last-child:after {
+      content: ' \2014\00a0\25A0';
+      font-size: 1.1em;
+    }
+  }
 }
 
 .prose--push {
-  margin-bottom: $gutter * 4;
+  margin-bottom: $gutter * 6;
 }
 
 .prose__media {
@@ -176,5 +183,9 @@
 .prose__subtitle {
   @include font-size(24);
   margin-bottom: $gutter * 2;
+  text-align: center;
+}
+
+.prose--flourish {
   text-align: center;
 }
