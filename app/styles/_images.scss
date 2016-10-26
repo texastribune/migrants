@@ -1,3 +1,9 @@
+.section__image {
+  .full & {
+    display: none;
+  }
+}
+
 .section__image--mobile {
   @include mq($from: m) {
     display: none;

@@ -2,6 +2,14 @@
 <p class="prose">{{ value }}</p>
 {% endmacro %}
 
+{% macro hr() %}
+<hr class="prose__separator">
+{% endmacro %}
+
+{% macro text_final(value) %}
+<p class="prose">{{ value }} {{ inject('assets/images/logos/tt-bug.svg') }}</p>
+{% endmacro %}
+
 {% macro map(value) %}
 <figure class="prose__media">
   <img class="prose__map" src="{{ static('assets/images/' + value) }}">

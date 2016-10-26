@@ -1,12 +1,12 @@
 .section__media {
-  background-size: cover;
   background-position: 70% center;
   background-repeat: no-repeat;
+  background-size: cover;
+  bottom: auto;
+  opacity: 0;
   top: 0;
   transition: opacity 1s ease-out;
-  bottom: auto;
   width: 100%;
-  opacity: 0;
   z-index: -1;
 
   @include mq($from: m) {

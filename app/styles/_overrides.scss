@@ -14,7 +14,7 @@ html {
 
 // Set some helpful defaults
 body {
-  background-color: $color-primary;
-  color: $color-text;
+  background-color: hsl(0, 0%, 10%);
+  color: $color-text-inverse;
   font-family: $font-serif;
 }

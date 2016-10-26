@@ -1,6 +1,6 @@
 {
   "bucket": "moose.texastribune.org",
-  "folder": "migrants",
+  "folder": "migrants-secret",
   "rawAssetsFolder": "raw_assets",
   "dataDir": "./data",
   "assetsDir": "./app/assets",

@@ -4,8 +4,13 @@ import selectAll from './utils/select-all';
 // import throttle from './utils/throttle';
 import scale from './utils/scale';
 import scrollWatcher from './utils/scroll-watcher';
-//
+
+const body = select('body');
+
+body.classList.add('full');
+
 const header = select('.header');
+const scrollToContinue = select('.section--starter .scroll-to-continue');
 // const heightPercent = 1;
 //
 // let storedInnerWidth = window.innerWidth;
@@ -26,11 +31,13 @@ const header = select('.header');
 //
 //
 setTimeout(() => header.classList.add('visible'), 750);
+setTimeout(() => scrollToContinue.classList.add('visible'), 1000 * 3);
 //
 const sections = selectAll('.section').map((el, idx) => {
   const header = select('.header', el);
   const media = select('.section__media', el);
-  const image = select('.section__media--image', el);
+  const bgImage = select('.section__media--image', el);
+  const image = select('.section__image', el);
 
   const section = {
     idx,
@@ -38,12 +45,14 @@ const sections = selectAll('.section').map((el, idx) => {
     header,
     media,
     image,
-    blurImage: image ? image.getAttribute('data-blur-photo') || false : false,
-    cover: media ? select('.cover', image) : null,
+    bgImage,
+    blurImage: bgImage ? bgImage.getAttribute('data-blur-photo') || false : false,
+    cover: media ? select('.cover', bgImage) : null,
     prose: select('.section__prose', el),
     inViewport: false,
     topVisible: false,
-    bottomVisible: false
+    bottomVisible: false,
+    imageLoaded: idx === 0 || false
   };
 
   return section;
@@ -78,17 +87,26 @@ function onScroll ({ offset }) {
     }
 
     if (section.inViewport && !wasInViewport) {
-      console.info('now in viewport: ', section.index);
-      if (section.media) section.media.classList.add('pin-fixed');
       if (section.media) section.media.classList.add('visible');
-
       if (section.header) section.header.classList.add('visible');
+
+      if (section.bgImage && idx > 0) {
+        const src = section.bgImage.getAttribute('data-bg-src');
+        section.bgImage.style.backgroundImage = `url(${src})`;
+        section.imageLoaded = true;
+      }
+
+      const nextSection = sections[idx + 1];
+
+      if (nextSection.image && !nextSection.imageLoaded) {
+        const src = nextSection.image.getAttribute('data-bg-src');
+        nextSection.image.src = src;
+        nextSection.imageLoaded = true;
+      }
     }
 
     if (!section.inViewport && wasInViewport) {
-      console.info('leaving viewport: ', section.index);
       if (section.media) {
-        section.media.classList.remove('pin-fixed');
         section.media.classList.remove('visible');
       }
 
@@ -96,24 +114,16 @@ function onScroll ({ offset }) {
     }
 
     if (section.inViewport && section.topVisible && !topWasVisible) {
-      console.info('top entering viewport: ', section.index);
-      if (section.media) section.media.classList.add('pin-fixed');
       if (section.media) section.media.classList.add('visible');
     }
 
-    if (!section.topVisible && topWasVisible) {
-      console.info('top leaving viewport: ', section.index);
-    }
+    if (!section.topVisible && topWasVisible) {}
 
     if (section.bottomVisible && !bottomWasVisible) {
-      console.info('bottom entering viewport: ', section.index);
-      if (section.media) section.media.classList.remove('pin-fixed');
       if (section.media) section.media.classList.remove('visible');
     }
 
     if (!section.bottomVisible && bottomWasVisible) {
-      console.info('bottom leaving viewport: ', section.index);
-      if (section.media) section.media.classList.add('pin-fixed');
       if (section.media) section.media.classList.add('visible');
     }
   });
