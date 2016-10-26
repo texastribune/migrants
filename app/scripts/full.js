@@ -59,7 +59,7 @@ const sections = selectAll('.section').map((el, idx) => {
 });
 
 const wHeight = window.innerHeight;
-const blurScale = scale([300, 0], [0, 5], true);
+// const blurScale = scale([300, 0], [0, 5], true);
 const opacityScale = scale([300, 0], [0, 1], true);
 
 function onScroll ({ offset }) {
@@ -79,10 +79,10 @@ function onScroll ({ offset }) {
     const distanceFromBottom = rect.bottom - wHeight;
 
     if (section.blurImage) {
-      if (section.media) section.media.style.filter = `blur(5px)`;
-      if (section.cover) section.cover.style.opacity = 0.9;
+      // if (section.media) section.media.style.filter = `blur(5px)`;
+      if (section.cover) section.cover.style.opacity = 1;
     } else {
-      if (section.media) section.media.style.filter = `blur(${blurScale(distanceFromBottom)}px)`;
+      // if (section.media) section.media.style.filter = `blur(${blurScale(distanceFromBottom)}px)`;
       if (section.cover) section.cover.style.opacity = opacityScale(distanceFromBottom);
     }
 

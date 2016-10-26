@@ -32,7 +32,7 @@
     <div class="section__media section__media--image"{% if loop.first %} style="background-image: url({{ static('assets/images/' + section.photo) }})"{% endif %} data-bg-src="{{ static('assets/images/' + section.photo) }}" {% if section.blur_photo %}data-blur-photo="true"{% endif %}>
       <div class="cover" style="opacity: 0;"></div>
     </div>
-    <img class="section__image section__image--mobile{% if section.blur_photo %} section__image--hide-mobile{% endif %}"{% if true %} src="{{ static('assets/images/' + section.photo) }}"{% endif %} data-bg-src="{{ static('assets/images/' + section.photo) }}" width="100%">
+    <img class="section__image section__image--mobile{% if section.blur_photo %} section__image--hide-mobile{% endif %}"{% if loop.first %} src="{{ static('assets/images/' + section.photo) }}"{% endif %} data-bg-src="{{ static('assets/images/' + section.photo) }}">
     <noscript><img src="{{ static('assets/images/' + section.photo) }}" width="100%"></noscript>
     {% endif %}
     <div class="section__prose{% if loop.last %} section__prose--end{% endif %}">

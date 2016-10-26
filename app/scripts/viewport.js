@@ -1,60 +1,28 @@
-import fastdom from 'fastdom';
 import Observable from './utils/observable';
+import throttle from './utils/throttle';
 
-function Viewport () {
-  this.win = window;
-  this.fastdom = fastdom;
+export default class Viewport {
+  constructor () {
+    this.win = window;
 
-  this._scrollTop = null;
-  this._size = null;
+    this.scrollObservable = new Observable();
 
-  this.scrollObservable = new Observable();
-  // this.resizeObservable = new Observable();
+    this._boundThrottledScroll = this._throttledScroll.bind(this);
+  }
 
-  this.connect();
+  activate () {
+    this.win.addEventListener('scroll', this._boundThrottledScroll);
+  }
 
-  this.fastdom.measure(() => {
-    this.getSize();
-  });
+  deactivate () {
+    this.win.removeEventListener('scroll', this._boundThrottledScroll);
+  }
+
+  _throttledScroll () {
+
+  }
+
+  onScroll (callback) {
+    this.scrollObservable.add(callback);
+  }
 }
-
-Viewport.prototype.connect = function () {
-  this.win.addEventListener('scroll', this._whenScroll.bind(this));
-};
-
-Viewport.prototype._whenScroll = function () {
-  this.fastdom.measure(() => {
-    this._scrollTop = this.win.pageYOffset;
-
-    this.scrollObservable.trigger(this._scrollTop);
-  });
-};
-
-Viewport.prototype.onScroll = function (callback) {
-  this.scrollObservable.add(callback);
-};
-
-// Viewport.prototype.onResize = function (callback) {
-//   this.resizeObservable.add(callback);
-// };
-
-Viewport.prototype.getScrollTop = function () {
-  if (this._scrollTop == null) {
-    this._scrollTop = this.win.pageYOffset;
-  }
-
-  return this._scrollTop;
-};
-
-Viewport.prototype.getSize = function () {
-  if (this._size == null) {
-    this._size = {
-      width: this.win.innerWidth,
-      height: this.win.innerHeight
-    };
-  }
-
-  return this._size;
-};
-
-export default Viewport;

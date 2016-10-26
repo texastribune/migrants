@@ -2,15 +2,15 @@
   background-position: 70% center;
   background-repeat: no-repeat;
   background-size: cover;
+  backface-visibility: hidden;
   bottom: auto;
-  opacity: 0;
   top: 0;
-  transition: opacity 1s ease-out;
   width: 100%;
   z-index: -1;
 
   @include mq($from: m) {
     background-position: center center;
+    display: none;
     min-height: 100vh;
     position: fixed;
   }

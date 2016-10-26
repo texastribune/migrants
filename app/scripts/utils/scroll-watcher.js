@@ -1,5 +1,6 @@
 import EventObserver from './event-observer';
 import raf from './raf';
+import throttle from './throttle';
 
 /**
  * `scrollWatcher` alerts any listeners when window's `scroll` event fires.
@@ -10,6 +11,7 @@ var scrollWatcher = function () {
   var observer = new EventObserver();
   var lastScrollPosition = 0;
   var active = false;
+  var throttledOnWindowScroll = throttle(onWindowScroll, 100);
 
   function onWindowScroll () {
     lastScrollPosition = window.pageYOffset;
@@ -39,7 +41,7 @@ var scrollWatcher = function () {
      */
     add: function (callback) {
       if (!observer.eventHasListeners('scroll')) {
-        window.addEventListener('scroll', onWindowScroll, false);
+        window.addEventListener('scroll', throttledOnWindowScroll, false);
       }
 
       observer.on('scroll', callback);
@@ -57,7 +59,7 @@ var scrollWatcher = function () {
       observer.off('scroll', callback);
 
       if (!observer.eventHasListeners('scroll')) {
-        window.removeEventListener('scroll', onWindowScroll, false);
+        window.removeEventListener('scroll', throttledOnWindowScroll, false);
       }
     },
 
@@ -69,7 +71,7 @@ var scrollWatcher = function () {
      */
     clear: function () {
       observer.clearAllListeners('scroll');
-      window.removeEventListener('scroll', onWindowScroll, false);
+      window.removeEventListener('scroll', throttledOnWindowScroll, false);
     }
   };
 };
